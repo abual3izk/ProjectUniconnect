@@ -1,8 +1,63 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home - UniConnect";
 }
+<main>
+    
+    <a href="/AboutUniconnect/about.html"
+       style="
+      display: flex;
+      justify-content: center;
+   ">
+        <a asp-controller="Home" asp-action="About">
+            <img src="~/images/uniconnect-logo.jpg"
+                 alt="UniConnect Logo"
+                 style="width:220px; height:auto; border-radius:24px; box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12); cursor:pointer;justify-content: center; margin-top: 80px;
+    margin-bottom: 40px;" />
+        </a>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        
+    </a>
+    <!-- Main Section: 3 Portals -->
+    <section class="grid" aria-label="Portals">
+
+
+
+        <!-- Employer Card -->
+        <a class="card" href="../loginUniconnect/EmployerLogin.html">
+            <div>
+                <h2 class="title t-green">Employer</h2>
+                <p class="desc">
+                    Post jobs, manage applications, and engage effectively with graduates and the university.
+                </p>
+            </div>
+            <span class="arrow">›</span>
+        </a>
+
+
+
+        <!-- University Card -->
+        <a class="card" href="../loginUniconnect/UniversityLogin.html">
+            <div>
+                <h2 class="title t-gold">University</h2>
+                <p class="desc">
+                    Analyze graduate employment data, launch events, and strengthen communication with alumni and recruiters.
+                </p>
+            </div>
+            <span class="arrow">›</span>
+        </a>
+
+
+
+        <!-- Graduate Card -->
+        <a class="card" href="../loginUniconnect/GraduateLogin.html">
+            <div>
+                <h2 class="title t-blue">Graduate</h2>
+                <p class="desc">
+                    Build your professional profile, apply for opportunities, and request services and certificates from your university.
+                </p>
+            </div>
+            <span class="arrow">›</span>
+        </a>
+
+    </section>
+</main>

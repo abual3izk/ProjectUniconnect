@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+    @section Styles {
+        <link rel="stylesheet" href="~/css/about.css" />
+    }
+
+}
+
+<section style="max-width:900px; margin:80px auto; text-align:center;">
+    <main class="wrap" id="top">
+            <div>
+                <h1>About UniConnect</h1>
+                <p style="color: var(--muted); margin-bottom: 8px;">
+                    A smart, bilingual platform connecting graduates, employers, and universities.
+                </p>
+                <nav class="toc">
+                    <a href="#why">Why We Built UniConnect</a>
+                    <a href="#objective">General Objective of the Project</a>
+                    <a href="#help">How UniConnect Helps Its Users</a>
+                    <a href="#solution">Why We Chose This Solution</a>
+                </nav>
+            </div>
+
+    <!-- الصورة مع Image Mapping -->
+    <img src="~/images/uniconnect-logo.jpg" usemap="#aboutmap"
+         alt="UniConnect Logo"
+         style="width:260px; margin-top:20px;" />
+
+    <map name="aboutmap">
+        <area shape="rect" coords="0,0,260,260" href="/Home/About" alt="About UniConnect">
+    </map>
+
+            <!-- SECTION 1 — WHY -->
+            <section id="why" class="card">
+                <h2>Why We Built UniConnect</h2>
+                <p>We developed this system to address three major gaps:</p>
+                <ul>
+                    <li>
+                        <strong>Weak graduate tracking:</strong><br>
+                        Universities struggle to obtain accurate and up-to-date information
+                        about the employment status of their graduates.
+                    </li>
+                    <li>
+                        <strong>For graduates – communication issues:</strong><br>
+                        Graduates often lack an official and organized channel to request
+                        services or follow up on post-graduation matters.
+                    </li>
+                    <li>
+                        <strong>For employers – limited connection with universities:</strong><br>
+                        Companies face difficulties sharing feedback, verifying certificates,
+                        or sending job and internship requests.
+                    </li>
+                </ul>
+                <a class="back-top" href="#top">Back to top</a>
+            </section>
+
+            <!-- SECTION 2 — OBJECTIVE -->
+            <section id="objective" class="card">
+                <h2>General Objective of the Project</h2>
+                <p>
+                    The main objective of the project is to build a unified platform that
+                    connects graduates, employers, and the university in a single integrated
+                    system.
+                </p>
+                <p>The platform aims to:</p>
+                <ul>
+                    <li>Centralize data instead of using scattered tools.</li>
+                    <li>Improve graduate tracking and employment visibility.</li>
+                    <li>Provide an official communication channel for alumni.</li>
+                    <li>
+                        Help the university enhance its academic programs based on employer
+                        feedback.
+                    </li>
+                    <li>Streamline hiring, verification, and service requests.</li>
+                </ul>
+
+                <a class="back-top" href="#top">Back to top</a>
+            </section>
+
+            <!-- SECTION 3 — HOW IT HELPS -->
+            <section id="help" class="card">
+                <h2>How UniConnect Helps Its Users</h2>
+
+                <h3>For Graduates</h3>
+                <ul>
+                    <li>Create a complete professional profile.</li>
+                    <li>Apply for jobs approved and monitored by the university.</li>
+                    <li>Communicate officially with the university.</li>
+                    <li>Track training experiences and employment history.</li>
+                </ul>
+
+                <h3>For Employers</h3>
+                <ul>
+                    <li>Access a reliable pool of qualified graduates.</li>
+                    <li>Instantly verify certificates through the system.</li>
+                    <li>Easily submit internship and job requests.</li>
+                    <li>Provide feedback that helps improve academic programs.</li>
+                </ul>
+
+                <h3>For the University</h3>
+                <ul>
+                    <li>Monitor graduate outcomes and employment trends.</li>
+                    <li>Improve communication with alumni.</li>
+                    <li>Receive structured feedback from employers.</li>
+                    <li>
+                        Access accurate reports to support curriculum development.
+                    </li>
+                </ul>
+
+                <a class="back-top" href="#top">Back to top</a>
+            </section>
+
+            <!-- SECTION 4 — SOLUTION -->
+            <section id="solution" class="card">
+                <h2>Why We Chose This Solution</h2>
+                <ul>
+                    <li>
+                        It solves real communication gaps between the three main stakeholders.
+                    </li>
+                    <li>
+                        It is scalable and can be extended to more colleges and employers.
+                    </li>
+                    <li>
+                        It establishes a formal, reliable, and centralized communication
+                        channel.
+                    </li>
+                </ul>
+                <a class="back-top" href="#top">Back to top</a>
+            </section>
+
+            <!-- SECTION 5 — VERVIEW TABLE -->
+            <section id="overview" class="card">
+                <h2>UniConnect  Overview</h2>
+
+
+                <table class="uc-table">
+                    <thead>
+                        <tr>
+                            <th>User Type</th>
+                            <th>Main Purpose</th>
+                            <th>Key Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Graduate</td>
+                            <td>Communicate with the university</td>
+                            <td>
+                                Request services – update profile – follow status
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Employer</td>
+                            <td>Connect with the university</td>
+                            <td>
+                                Send training/hiring requests – provide feedback
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>University</td>
+                            <td>Communicates with graduates and supports their needs.</td>
+                            <td>
+                                collect employer
+                                feedback, support curriculum development.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <a class="back-top" href="#top">Back to top</a>
+            </section>
+    </main>
+</section>

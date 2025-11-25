@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<link rel="stylesheet"href="~/css/register.css" />
+
+<main class="container">
+
+    <!-- Logo نفس Login -->
+    <a asp-controller="Home" asp-action="About"
+       style="display:flex; justify-content:center; margin-top:120px; margin-bottom:30px;">
+        <img src="~/images/uniconnect-logo.jpg"
+             alt="UniConnect Logo"
+             style="width:180px; height:auto; border-radius:14px;
+                    box-shadow:0 4px 18px rgba(0,0,0,0.15);" />
+    </a>
+
+    <h1 class="page-title">Create your account</h1>
+    <p class="subtext">Join UniConnect as a graduate and start building your profile.</p>
+
+    <div class="card-wrap">
+        <form id="registerForm" class="login-card" method="post" novalidate>
+
+            <!-- Full Name -->
+            <label class="field-label" for="fullName">Full Name</label>
+            <div class="input-wrap">
+                <input id="fullName" class="input" type="text"
+                       name="fullName"
+                       required
+                       placeholder="Your full name" />
+            </div>
+
+            <!-- Email -->
+            <label class="field-label" for="regEmail">Email</label>
+            <div class="input-wrap">
+                <input id="regEmail" class="input" type="email"
+                       name="email"
+                       required
+                       placeholder="you@example.com"
+                       autocomplete="email" />
+                <span class="input-icon">@@</span>
+            </div>
+
+            <!-- Password -->
+            <label class="field-label" for="regPass">Password</label>
+            <div class="input-wrap">
+                <input id="regPass" class="input" type="password"
+                       name="password"
+                       required minlength="8"
+                       placeholder="Enter a strong password"
+                       autocomplete="new-password" />
+            </div>
+
+            <!-- Confirm Password -->
+            <label class="field-label" for="confirmPass">Confirm Password</label>
+            <div class="input-wrap">
+                <input id="confirmPass" class="input" type="password"
+                       name="confirmPassword"
+                       required minlength="8"
+                       placeholder="Re-enter your password"
+                       autocomplete="new-password" />
+            </div>
+
+            <!-- Password Requirements -->
+            <ul class="pw-rules">
+                <li id="rule-length" class="bad">At least 8 characters</li>
+                <li id="rule-number" class="bad">At least 1 number</li>
+                <li id="rule-upper" class="bad">At least 1 uppercase letter</li>
+            </ul>
+
+            <!-- Terms -->
+            <label class="checkbox-row">
+                <input type="checkbox" id="acceptTerms" />
+                <span>I agree to the Terms & Conditions.</span>
+            </label>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-graduate">Create Account</button>
+
+            <p id="registerMsg" class="msg" aria-live="polite"></p>
+        </form>
+    </div>
+</main>

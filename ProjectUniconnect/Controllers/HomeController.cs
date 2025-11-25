@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ProjectUniconnect.Models;
 
@@ -27,6 +27,11 @@ namespace ProjectUniconnect.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult About()
+        {
+            // يرجع View اسمه About.cshtml من مجلد Views/Home
+            return View();
         }
     }
 }

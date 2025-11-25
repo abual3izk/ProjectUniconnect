@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    <link rel="stylesheet" href="~/css/login.css" />
+
+}
+
+<main class="container">
+    <a href='@Url.Action("About", "Home")'
+       style="display:flex; justify-content:center; margin-top:120px; margin-bottom:30px;">
+        <img src="~/images/uniconnect-logo.jpg"
+             alt="UniConnect Logo"
+             style="width:180px; height:auto; border-radius:14px;
+                    box-shadow:0 4px 18px rgba(0,0,0,0.15); cursor:pointer;" />
+    </a>
+
+    <h1 class="page-title">Hello Again!</h1>
+    <p class="subtext">Welcome back! Please login to your account.</p>
+
+    <div class="card-wrap">
+        <form id="gradForm" class="login-card" novalidate>
+            <!-- Email -->
+            <label class="field-label" for="gradEmail">Email</label>
+            <div class="input-wrap">
+                <input id="gradEmail" class="input" type="email"
+                       required placeholder="you@example.com" autocomplete="email" />
+                <span class="input-icon">@@</span>
+            </div>
+
+            <!-- Password -->
+            <label class="field-label" for="gradPass">Password</label>
+            <div class="input-wrap">
+                <input id="gradPass" class="input" type="password"
+                       required minlength="6"
+                       placeholder="Enter your password"
+                       autocomplete="current-password" />
+                <button type="button" class="icon-btn"
+                        data-target="gradPass"
+                        aria-label="Show password">Show</button>
+            </div>
+
+            <!-- Forgot password -->
+            <div style="margin:10px 0 16px">
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-graduate">Login</button>
+
+            <!-- Message output (يستخدمها login.js) -->
+            <p id="gradMsg" class="msg" aria-live="polite"></p>
+        </form>
+    </div>
+</main>

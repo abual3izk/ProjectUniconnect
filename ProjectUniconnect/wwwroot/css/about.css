@@ -1,0 +1,134 @@
+﻿:root {
+    --brand: #4f46e5;
+    --ink: #0f172a;
+    --muted: #475569;
+    --ring: #e2e8f0;
+    --panel: #fff
+}
+
+body {
+    margin: 0;
+    font-family: system-ui,Arial,sans-serif;
+    background: #f8fafc;
+    color: var(--ink)
+}
+
+main.wrap {
+    max-width: 1024px;
+    margin: auto;
+    padding: 16px;
+    padding-top: var(--uc-header-pad,90px)
+}
+
+h1 {
+    margin: 0 0 16px;
+    letter-spacing: .3px
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: center;
+    background: linear-gradient(180deg,#eef2ff,transparent);
+    border: 1px solid var(--ring);
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    padding: 16px;
+    margin-bottom: 20px
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--ring);
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.06);
+    padding: 16px;
+    margin: 12px 0
+}
+
+.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0
+}
+
+    .toc a {
+        padding: 6px 10px;
+        border: 1px solid var(--ring);
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--muted)
+    }
+
+        .toc a:hover {
+            border-color: var(--brand);
+            color: var(--brand)
+        }
+
+.back-top {
+    font-size: 14px;
+    color: var(--brand);
+    text-decoration: none
+}
+
+    .back-top:hover {
+        text-decoration: underline
+    }
+
+.hero-image {
+    text-align: center;
+    width: 100%
+}
+
+.map-img {
+    width: 70%;
+    max-width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.18);
+    border: 1px solid var(--ring)
+}
+
+table.uc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden
+}
+
+.uc-table th, .uc-table td {
+    border: 1px solid var(--ring);
+    padding: 10px 14px;
+    font-size: 14px
+}
+
+.uc-table th {
+    background: #eef2ff;
+    font-weight: 600
+}
+
+.uc-table tbody tr:nth-child(1) {
+    background: #1659ff
+}
+/* Graduate */
+.uc-table tbody tr:nth-child(2) {
+    background: #2f6e47
+}
+/* Employer */
+.uc-table tbody tr:nth-child(3) {
+    background: #b6a64c
+}
+/* University */
+
+
+.uc-table th {
+    color: #000000 !important;
+}
+
+
+.uc-table td {
+    color: #ffffff !important;
+}
