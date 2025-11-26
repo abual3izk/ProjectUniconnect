@@ -1,0 +1,91 @@
+/* ========== GLOBAL ========== */
+body {
+    margin: 0;
+    padding: var(--uc-header-pad) 0 0 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    width: 100%;
+    padding: 120px 20px 100px;
+    text-align: center;
+    background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
+}
+
+.hero-title {
+    font-size: 46px;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: #1e293b;
+}
+
+.hero-sub {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #475569;
+}
+
+.hero-btns {
+    margin-top: 20px;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin: 8px;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    background: #4f46e5;
+    color: white;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.hero-btn:hover {
+    background: #4338ca;
+}
+
+/* ========== FEATURES SECTION ========== */
+.features {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.feature-box {
+    width: 280px;
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: 0.2s;
+}
+
+.feature-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 18px;
+    color: #4f46e5;
+}
+
+.feature-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.feature-text {
+    font-size: 15px;
+}

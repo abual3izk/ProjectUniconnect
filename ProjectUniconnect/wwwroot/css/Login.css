@@ -1,156 +1,138 @@
 ﻿/* ===== Base Theme Tokens (shared) ===== */
-:root {
-    --bg: #fff;
-    --text: #000000;
-    --brand: #1659ff;
-    --input: #c8d5ff;
-    --hint: #000000;
-    --ok: #2fa772;
-    --err: #e05b5b;
-    --shadow: 0 8px 20px rgba(0,0,0,.06);
-    --border: #e7e7e7;
+:root{
+  --bg:#fff;
+  --text:#000000;
+  --brand:#1659ff;
+  --input:#c8d5ff;
+  --hint:#000000;
+  --ok:#2fa772;
+  --err:#e05b5b;
+  --shadow:0 8px 20px rgba(0,0,0,.06);
+  --border:#e7e7e7;
 }
 
 /* ===== Theme Overrides by page ===== */
-body[data-theme="employer"] {
-    --brand: #2f6e47;
-}
-
-body[data-theme="university"] {
-    --brand: #b6a64c;
-}
-
-body[data-theme="graduate"] {
-    --brand: #1659ff;
-}
+body[data-theme="employer"]{  --brand:#2f6e47; }
+body[data-theme="university"]{--brand:#b6a64c; }
+body[data-theme="graduate"]{  --brand:#1659ff; }
 
 /* ===== General Page Layout ===== */
-body.page {
-    background: var(--bg);
-    color: var(--text);
-    font-family: system-ui, Arial;
+body.page{
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui, Arial;
 }
-
-.container {
-    max-width: 680px;
-    margin: 140px auto;
-    padding: 0 20px;
-    text-align: center;
+.container{
+  max-width:680px;
+  margin:140px auto;
+  padding:0 20px;
+  text-align:center;
 }
 
 /* ===== Headings & Text ===== */
-.page-title {
-    margin: 0 0 10px;
-    font-size: 42px;
+.page-title{
+  margin:0 0 10px;
+  font-size:42px;
 }
-
-.subtext {
-    margin: 0 auto 30px;
-    max-width: 520px;
-    color: var(--hint);
-    font-size: 15px;
-    line-height: 1.6;
+.subtext{
+  margin:0 auto 30px;
+  max-width:520px;
+  color:var(--hint);
+  font-size:15px;
+  line-height:1.6;
 }
 
 /* ===== Card Container ===== */
-.login-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 26px;
-    box-shadow: var(--shadow);
-    text-align: left;
-    margin: 0 auto;
-    max-width: 620px;
+.login-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:26px;
+  box-shadow:var(--shadow);
+  text-align:left;
+  margin:0 auto;
+  max-width:620px;
 }
 
 /* ===== Form Fields ===== */
-.field-label {
-    font-size: 14px;
-    color: #5b74ad;
-    display: block;
-    margin: 12px 0 6px;
+.field-label{
+  font-size:14px;
+  color:#5b74ad;
+  display:block;
+  margin:12px 0 6px;
 }
-
-.input-wrap {
-    position: relative;
-    margin: 6px 0 18px;
+.input-wrap{
+  position:relative;
+  margin:6px 0 18px;
 }
-
-.input {
-    width: 100%;
-    height: 56px;
-    border-radius: 12px;
-    border: 2px solid var(--input);
-    padding: 0 52px 0 16px;
-    font-size: 16px;
-    box-sizing: border-box;
-    outline: none;
+.input{
+  width:100%;
+  height:56px;
+  border-radius:12px;
+  border:2px solid var(--input);
+  padding:0 52px 0 16px;
+  font-size:16px;
+  box-sizing:border-box;
+  outline:none;
 }
-
-.input-icon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6d86d8;
-    pointer-events: none;
+.input-icon{
+  position:absolute;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#6d86d8;
+  pointer-events:none;
 }
-
-.icon-btn {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #6d86d8;
+.icon-btn{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  color:#6d86d8;
 }
 
 /* ===== Buttons & Links ===== */
-.btn {
-    width: 100%;
-    height: 56px;
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
+.btn{
+  width:100%;
+  height:56px;
+  border:none;
+  border-radius:12px;
+  color:#fff;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
 }
 
-/* Login Button Colors */
 .btn-primary,
 .btn-employer,
 .btn-university,
-.btn-graduate {
-    background: var(--brand);
+.btn-graduate{
+  background:var(--brand);
 }
 
-/* Login Links */
 .link-primary,
 .link-employer,
 .link-university,
-.link-graduate {
-    color: var(--brand);
-    text-decoration: none;
-    font-weight: 600;
+.link-graduate{
+  color:var(--brand);
+  text-decoration:none;
+  font-weight:600;
 }
 
 /* Messages */
-.msg {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 14px;
-    color: var(--err);
-    min-height: 18px;
+.msg{
+  text-align:center;
+  margin-top:10px;
+  font-size:14px;
+  color:var(--err);
+  min-height:18px;
 }
 
 /* ===== Responsive ===== */
-@media (max-width:520px) {
-    .login-card {
-        padding: 20px;
-    }
+@media (max-width:520px){
+  .login-card{ padding:20px; }
 }

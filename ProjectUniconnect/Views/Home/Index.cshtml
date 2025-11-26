@@ -1,29 +1,116 @@
 ﻿@{
-    ViewData["Title"] = "Home - UniConnect";
+    // Basic metadata for the Home page
+    ViewData["Title"] = "UniConnect Home";
+    ViewData["BodyClass"] = "";
+    ViewData["BodyTheme"] = "";
 }
-<main>
-    
-    <a href="/AboutUniconnect/about.html"
-       style="
-      display: flex;
-      justify-content: center;
-   ">
-        <a asp-controller="Home" asp-action="About">
-            <img src="~/images/uniconnect-logo.jpg"
-                 alt="UniConnect Logo"
-                 style="width:220px; height:auto; border-radius:24px; box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12); cursor:pointer;justify-content: center; margin-top: 80px;
-    margin-bottom: 40px;" />
-        </a>
 
-        
+
+<script src="~/js/header.js" defer></script>
+
+@section Styles {
+    <style>
+    /* Global theme colors and shared variables */
+    :root {
+      --bg:#eef2ff;
+      --card:#ffffff;
+      --border:#e8e8e8;
+      --shadow:0 8px 20px rgba(0,0,0,.05);
+      --green:#2f6e47;
+      --gold:#b6a64c;
+      --blue:#1659ff;
+      --text:#0f172a;
+      --muted:#475569;
+    }
+
+    /* Reset & base layout */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Main content container */
+    main {
+      max-width: 1200px;
+      margin: 120px auto;
+      padding: 0 20px;
+    }
+
+    /* Three-card grid (Employer – University – Graduate) */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* Portal card styling */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 60px 40px 40px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Card hover movement */
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.07);
+    }
+
+    /* Portal title colors */
+    .title { font-size: 34px; font-weight: 800; margin-bottom: 14px; }
+    .t-green { color: var(--green); }
+    .t-gold  { color: var(--gold); }
+    .t-blue  { color: var(--blue); }
+
+    .desc {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Arrow on the bottom-right */
+    .arrow {
+      font-size: 34px;
+      color: #111;
+      text-align: right;
+      transition: transform 0.2s ease;
+      display: block;
+    }
+    .card:hover .arrow { transform: translateX(6px); }
+    </style>
+}
+
+<main>
+
+    <!-- Logo linking to the About Page (MVC routing) -->
+    <a asp-controller="Home" asp-action="About"
+       style="display:flex; justify-content:center; margin-top:120px; margin-bottom:30px;">
+        <img src="~/Images/logo.jpg"
+             alt="UniConnect Logo"
+             style="width:180px; height:auto; border-radius:14px;
+                    box-shadow:0 4px 18px rgba(0,0,0,0.15); cursor:pointer;">
     </a>
-    <!-- Main Section: 3 Portals -->
+
+    <!-- Three main access portals -->
     <section class="grid" aria-label="Portals">
 
-
-
-        <!-- Employer Card -->
-        <a class="card" href="../loginUniconnect/EmployerLogin.html">
+        <!-- Employer Portal -->
+        <a class="card" asp-controller="Employer" asp-action="Login">
             <div>
                 <h2 class="title t-green">Employer</h2>
                 <p class="desc">
@@ -33,10 +120,8 @@
             <span class="arrow">›</span>
         </a>
 
-
-
-        <!-- University Card -->
-        <a class="card" href="../loginUniconnect/UniversityLogin.html">
+        <!-- University Portal -->
+        <a class="card" asp-controller="University" asp-action="Login">
             <div>
                 <h2 class="title t-gold">University</h2>
                 <p class="desc">
@@ -46,10 +131,8 @@
             <span class="arrow">›</span>
         </a>
 
-
-
-        <!-- Graduate Card -->
-        <a class="card" href="../loginUniconnect/GraduateLogin.html">
+        <!-- Graduate Portal -->
+        <a class="card" asp-controller="Graduate" asp-action="Login">
             <div>
                 <h2 class="title t-blue">Graduate</h2>
                 <p class="desc">

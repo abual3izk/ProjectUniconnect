@@ -1,0 +1,94 @@
+@{
+    // Basic page setup + theme used by the layout
+    ViewData["Title"] = "Graduate Login";
+    ViewData["BodyClass"] = "page";
+    ViewData["BodyTheme"] = "graduate";
+}
+
+
+<script src="~/js/header.js" defer></script>
+
+@section Styles {
+    <!-- Main login CSS -->
+    <link rel="stylesheet" href="~/css/login.css" />
+
+    <style>
+        /* Keep the login card above the background */
+        .login-card { position: relative; z-index: 1; }
+
+        /* Mobile title size */
+        @@media (max-width: 520px) {
+            .page-title { font-size: 34px; }
+        }
+    </style>
+}
+
+<main class="container">
+
+    <!-- Logo that redirects to the About page -->
+    <a asp-controller="Home" asp-action="About"
+       style="display:flex; justify-content:center; margin-top:120px; margin-bottom:30px;">
+        <img src="~/Images/logo.jpg"
+             alt="UniConnect Logo"
+             style="width:180px; height:auto; border-radius:14px;
+                    box-shadow:0 4px 18px rgba(0,0,0,0.15); cursor:pointer;">
+    </a>
+
+    <!-- Page header text -->
+    <h1 class="page-title">Hello Again!</h1>
+    <p class="subtext">Welcome back! Please login to your account.</p>
+
+    <div class="card-wrap">
+
+        <!-- Graduate login form -->
+        <form id="gradForm" class="login-card" novalidate>
+
+            <!-- Email field -->
+            <label class="field-label" for="gradEmail">Email</label>
+            <div class="input-wrap">
+                <input id="gradEmail"
+                       class="input"
+                       type="email"
+                       required
+                       placeholder="you@example.com"
+                       autocomplete="email" />
+                <span class="input-icon">@@</span>
+            </div>
+
+            <!-- Password field + show/hide button -->
+            <label class="field-label" for="gradPass">Password</label>
+            <div class="input-wrap">
+                <input id="gradPass"
+                       class="input"
+                       type="password"
+                       required
+                       minlength="6"
+                       placeholder="Enter your password"
+                       autocomplete="current-password" />
+                <button type="button"
+                        class="icon-btn"
+                        data-target="gradPass"
+                        aria-label="Show password">
+                    Show
+                </button>
+            </div>
+
+            <!-- Forgot password placeholder -->
+            <div style="margin:10px 0 16px">
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <!-- Login button -->
+            <button type="submit" class="btn btn-graduate">Login</button>
+
+            <!-- Message for validation/success -->
+            <p id="gradMsg" class="msg" aria-live="polite"></p>
+
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- JS logic for form validation + show/hide password -->
+    <script src="~/js/login.js"></script>
+}

@@ -1,0 +1,93 @@
+@{
+    // Page title + theme settings
+    ViewData["Title"] = "Employer Login";
+    ViewData["BodyClass"] = "page";
+    ViewData["BodyTheme"] = "employer";
+}
+
+<script src="~/js/header.js" defer></script>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" />
+
+    <style>
+        /* Keeps login card above background elements */
+        .login-card {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile heading size */
+        @@media (max-width: 520px) {
+            .page-title {
+                font-size: 34px;
+            }
+        }
+    </style>
+}
+
+<main class="container">
+
+    <!-- Logo linking to About page -->
+    <a asp-controller="Home" asp-action="About"
+       style="display:flex; justify-content:center; margin-top:120px; margin-bottom:30px;">
+
+        <img src="~/Images/logo.jpg"
+             alt="UniConnect Logo"
+             style="width:180px; height:auto; border-radius:14px;
+                    box-shadow:0 4px 18px rgba(0,0,0,0.15); cursor:pointer;">
+    </a>
+
+    <!-- Page heading + intro text -->
+    <h1 class="page-title">Hello Again!</h1>
+    <p class="subtext">Welcome back! Please login to your account.</p>
+
+    <div class="card-wrap">
+
+        <!-- Employer login form -->
+        <form id="empForm" class="login-card" novalidate>
+
+            <!-- Email input -->
+            <label class="field-label" for="empEmail">Email</label>
+            <div class="input-wrap">
+                <input id="empEmail" class="input" type="email" required
+                       placeholder="you@company.com" autocomplete="email" />
+                <span class="input-icon">@@</span>
+            </div>
+
+            <!-- Password input + toggle button -->
+            <label class="field-label" for="empPass">Password</label>
+            <div class="input-wrap">
+                <input id="empPass" class="input" type="password" required minlength="6"
+                       placeholder="Enter your password" autocomplete="current-password" />
+
+                <button type="button" class="icon-btn" data-target="empPass" aria-label="Show password">
+                    Show
+                </button>
+            </div>
+
+            <!-- Forgot password link -->
+            <div style="margin:10px 0 16px">
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <!-- Login button -->
+            <button type="submit" class="btn btn-employer">Login</button>
+
+            <!-- Message area (success/error) -->
+            <p id="empMsg" class="msg" aria-live="polite"></p>
+
+            <!-- Link to Signup -->
+            <div class="signup-hint">
+                Don’t have an account?
+                <a asp-controller="Employer" asp-action="Signup" class="link-employer">Sign up</a>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Login form script -->
+    <script src="~/js/login.js"></script>
+}

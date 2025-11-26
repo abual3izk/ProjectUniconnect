@@ -1,0 +1,127 @@
+@{
+    // Basic page setup and theme flags
+    ViewData["Title"] = "Employer Sign Up";
+    ViewData["BodyClass"] = "";
+    ViewData["BodyTheme"] = "";
+}
+
+<script src="~/js/header.js" defer></script>
+
+@section Styles {
+    <style>
+    /* Page theme colors and base styles */
+    :root{--bg:#fff;--text:#000;--brand:#2f6e47;--input:#c8d5ff;--hint:#000;--ok:#2fa772;--err:#e05b5b;--shadow:0 8px 20px rgba(0,0,0,.06);--border:#e7e7e7}
+
+    /* General page layout */
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Arial,sans-serif}
+    .container{max-width:680px;margin:140px auto;padding:0 20px;text-align:center}
+
+    /* Title and subtitle styling */
+    h1{margin:0 0 10px;font-size:42px}
+    .sub{margin:0 auto 30px;max-width:520px;color:var(--hint);font-size:15px;line-height:1.6}
+
+    /* Card (form wrapper) */
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--shadow);text-align:left;max-width:620px;margin:auto}
+
+    /* Form labels and inputs */
+    label{font-size:14px;color:var(--brand);margin:12px 0 6px;display:block}
+    .input{width:100%;height:56px;border-radius:12px;border:2px solid var(--input);padding:0 16px;font-size:16px;box-sizing:border-box}
+
+    /* Submit button */
+    .btn{width:100%;height:56px;border:none;border-radius:12px;background:var(--brand);color:#fff;font-size:18px;font-weight:600;cursor:pointer;margin-top:6px}
+
+    /* Links + message text */
+    .link{color:var(--brand);text-decoration:none;font-weight:600}
+    .msg{margin-top:10px;font-size:14px;color:var(--err);min-height:18px;text-align:center}
+    .hint{margin-top:16px;color:#8494b8;font-size:15px;text-align:center}
+
+    /* Mobile adjustments */
+    @@media(max-width:520px){.card{padding:20px}h1{font-size:34px}}
+    </style>
+}
+
+<div class="container">
+
+    <!-- Logo that links to About page -->
+    <a asp-controller="Home" asp-action="About"
+       style="display:flex; justify-content:center; margin-top:120px; margin-bottom:30px;">
+
+        <img src="~/Images/logo.jpg"
+             alt="UniConnect Logo"
+             style="width:180px; height:auto; border-radius:14px; box-shadow:0 4px 18px rgba(0,0,0,0.15); cursor:pointer;">
+    </a>
+
+    <!-- Page title + short description -->
+    <h1>Employer Registration</h1>
+    <p class="sub">Create your employer account.</p>
+
+    <!-- Employer signup form -->
+    <form id="signupForm" class="card" autocomplete="on" novalidate>
+
+        <!-- Company name -->
+        <label for="suCompany">Company Name</label>
+        <input id="suCompany" class="input" type="text" placeholder="Your company name" required autofocus />
+
+        <!-- Company email -->
+        <label for="CEmail">Company Email</label>
+        <input id="CEmail" class="input" type="email" placeholder="company@example.com" autocomplete="email" required />
+
+        <!-- Password + confirm -->
+        <label for="Pass">Password</label>
+        <input id="Pass" class="input" type="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password" />
+
+        <label for="Pass2">Confirm Password</label>
+        <input id="Pass2" class="input" type="password" placeholder="Re-enter your password" minlength="6" required autocomplete="new-password" />
+
+        <!-- Terms agreement -->
+        <label><input id="suTerms" type="checkbox" required /> I agree to the Terms Conditions</label>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn">Create Employer Account</button>
+
+        <!-- Message area -->
+        <p id="suMsg" class="msg" aria-live="polite"></p>
+
+        <!-- Link to login page -->
+        <div class="hint">
+            Already have an employer account?
+            <a id="goLogin" class="link" asp-controller="Employer" asp-action="Login">Log in</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+    (function(){
+      // Select main form elements
+      const form  = document.getElementById('signupForm');
+      const p1    = document.getElementById('Pass');
+      const p2    = document.getElementById('Pass2');
+      const terms = document.getElementById('suTerms');
+      const msg   = document.getElementById('suMsg');
+
+      // Handle form submission
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        msg.style.color="var(--err)";
+        msg.textContent="";
+
+        // Basic HTML validation
+        if(!form.checkValidity()){ form.reportValidity(); return; }
+
+        // Check password match
+        if(p1.value !== p2.value){ msg.textContent="Passwords do not match."; return; }
+
+        // Check if user accepted terms
+        if(!terms.checked){ msg.textContent="You must agree to the terms."; return; }
+
+        // Success message
+        msg.style.color="var(--ok)";
+        msg.textContent="Employer account created successfully.";
+
+        // Reset form fields
+        form.reset();
+      });
+    })();
+    </script>
+}

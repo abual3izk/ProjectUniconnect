@@ -1,4 +1,17 @@
-﻿function bindLoginForm({ formId, emailId, passId, msgId }) {
+﻿// ===============================
+// UniConnect - Login Form Handler
+// Generic Binding for 3 Login Pages
+// ===============================
+
+/**
+ * Binds login validation logic to a specific form.
+ * @param {Object} config - Form configuration.
+ * @param {string} config.formId - The form element ID.
+ * @param {string} config.emailId - The email input ID.
+ * @param {string} config.passId - The password input ID.
+ * @param {string} config.msgId - The message label ID.
+ */
+function bindLoginForm({ formId, emailId, passId, msgId }) {
     const form = document.getElementById(formId);
     if (!form) return;
 
@@ -6,39 +19,73 @@
     const pass = document.getElementById(passId);
     const msg = document.getElementById(msgId);
 
-    // Toggle password visibility 
-    const toggleBtn = form.querySelector('.icon-btn');
+    // ===== Toggle Password Visibility =====
+    const toggleBtn = form.querySelector(".icon-btn");
     if (toggleBtn && pass) {
-        toggleBtn.addEventListener('click', () => {
-            pass.type = pass.type === 'password' ? 'text' : 'password';
-            toggleBtn.textContent = pass.type === 'password' ? 'Show' : 'Hide';
-            toggleBtn.setAttribute('aria-label', pass.type === 'password' ? 'Show password' : 'Hide password');
+        toggleBtn.addEventListener("click", () => {
+            const isHidden = pass.type === "password";
+            pass.type = isHidden ? "text" : "password";
+
+            toggleBtn.textContent = isHidden ? "Hide" : "Show";
+            toggleBtn.setAttribute(
+                "aria-label",
+                isHidden ? "Hide password" : "Show password"
+            );
+
             pass.focus();
         });
     }
 
-    // submit handler
-    form.addEventListener('submit', (e) => {
+    // ===== Handle Form Submit =====
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (msg) { msg.style.color = 'var(--err)'; msg.textContent = ''; }
 
+        // reset message
+        if (msg) {
+            msg.style.color = "var(--err)";
+            msg.textContent = "";
+        }
+
+        // Check HTML5 form validation
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
         }
 
+        // Simulated success message (front-end only)
         if (msg) {
-            msg.style.color = 'var(--ok)';
-            msg.textContent = 'Login successful (front-end only).';
+            msg.style.color = "var(--ok)";
+            msg.textContent = "Login successful (front-end only).";
         }
 
+        // Reset form fields
         form.reset();
     });
 }
 
-// Initialize bindings for the three forms 
-document.addEventListener('DOMContentLoaded', () => {
-    bindLoginForm({ formId: 'gradForm', emailId: 'gradEmail', passId: 'gradPass', msgId: 'gradMsg' });
-    bindLoginForm({ formId: 'empForm', emailId: 'empEmail', passId: 'empPass', msgId: 'empMsg' });
-    bindLoginForm({ formId: 'uniForm', emailId: 'uniEmail', passId: 'uniPass', msgId: 'uniMsg' });
+// ===============================
+// Initialize Login Forms
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+    bindLoginForm({
+        formId: "gradForm",
+        emailId: "gradEmail",
+        passId: "gradPass",
+        msgId: "gradMsg"
+    });
+
+    bindLoginForm({
+        formId: "empForm",
+        emailId: "empEmail",
+        passId: "empPass",
+        msgId: "empMsg"
+    });
+
+    bindLoginForm({
+        formId: "uniForm",
+        emailId: "uniEmail",
+        passId: "uniPass",
+        msgId: "uniMsg"
+    });
 });

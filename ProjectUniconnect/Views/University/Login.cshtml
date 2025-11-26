@@ -1,0 +1,102 @@
+@{
+    // Page metadata (title + layout values)
+    ViewData["Title"] = "University Login";
+    ViewData["BodyClass"] = "page";
+    ViewData["BodyTheme"] = "university";
+}
+
+
+<script src="~/js/header.js" defer></script>
+
+
+@section Styles {
+    <!-- Shared login page styling -->
+    <link rel="stylesheet" href="~/css/login.css" />
+    <style>
+        /* Make sure the login card stays above the fixed header */
+        .login-card { position: relative; z-index: 1; }
+
+        /* Adjust heading size on small screens */
+        @@media (max-width: 520px) {
+            .page-title { font-size: 34px; }
+        }
+    </style>
+}
+
+<main class="container">
+
+    <!-- Logo at top (links to About page through MVC routing) -->
+    <a asp-controller="Home" asp-action="About"
+       style="
+          display: flex;
+          justify-content: center;
+          margin-top: 120px;
+          margin-bottom: 30px;
+       ">
+        <img src="~/Images/logo.jpg"
+             alt="UniConnect Logo"
+             style="
+                width: 180px;
+                height: auto;
+                border-radius: 14px;
+                box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+                cursor: pointer;
+             ">
+    </a>
+
+    <!-- Page heading + description -->
+    <h1 class="page-title">Hello Again!</h1>
+    <p class="subtext">Welcome back! Please login to your account.</p>
+
+    <div class="card-wrap">
+        <!-- University login form -->
+        <form id="uniForm" class="login-card" novalidate>
+
+            <!-- Email field -->
+            <label class="field-label" for="uniEmail">Email</label>
+            <div class="input-wrap">
+                <input id="uniEmail"
+                       class="input"
+                       type="email"
+                       required
+                       placeholder="you@@university.edu"
+                       autocomplete="email" />
+                <span class="input-icon">@@</span>
+            </div>
+
+            <!-- Password field + Show button -->
+            <label class="field-label" for="uniPass">Password</label>
+            <div class="input-wrap">
+                <input id="uniPass"
+                       class="input"
+                       type="password"
+                       required
+                       minlength="6"
+                       placeholder="Enter your password"
+                       autocomplete="current-password" />
+                <button type="button"
+                        class="icon-btn"
+                        data-target="uniPass"
+                        aria-label="Show password">
+                    Show
+                </button>
+            </div>
+
+            <!-- Forgot password link -->
+            <div style="margin:10px 0 16px">
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-university">Login</button>
+
+            <!-- Output message placeholder -->
+            <p id="uniMsg" class="msg" aria-live="polite"></p>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Front-end login handler (shared for all 3 roles) -->
+    <script src="~/js/login.js"></script>
+}
