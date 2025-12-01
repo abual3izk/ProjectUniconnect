@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectUniconnect.Data;
 using ProjectUniconnect.Models;
@@ -111,6 +111,24 @@ namespace ProjectUniconnect.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            var employer = _context.Employers
+                .FirstOrDefault(e => e.Email == email && e.Password == password);
+
+            if (employer == null)
+            {
+                ViewBag.Error = "Invalid login";
+                return View();
+            }
+
+            // حفظ الاسم والسيشن
+            HttpContext.Session.SetString("EmployerName", employer.CompanyName);
+            HttpContext.Session.SetInt32("EmployerId", employer.Id);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
