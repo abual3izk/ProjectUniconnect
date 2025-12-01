@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjectUniconnect.Models.Employer>
+
+@{
+    ViewData["Title"] = "Employers";
+}
+
+<h1>Employers</h1>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="Search by name or email" />
+    <button type="submit">Search</button>
+    <a asp-action="Index">Clear</a>
+</form>
+
+@if (TempData["Message"] != null)
+{
+    <p style="color:green">@TempData["Message"]</p>
+}
+
+<p>
+    <a asp-action="Signup">Add New Employer</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CompanyName</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

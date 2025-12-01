@@ -1,0 +1,32 @@
+﻿@model ProjectUniconnect.Models.Employer
+
+@{
+    ViewData["Title"] = "Edit Employer";
+}
+
+<h1>Edit Employer</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="CompanyName"></label>
+        <input asp-for="CompanyName" />
+        <span asp-validation-for="CompanyName"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <button type="submit">Save</button>
+    <a asp-action="Index">Cancel</a>
+</form>
