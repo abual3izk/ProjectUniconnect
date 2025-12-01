@@ -1,3 +1,4 @@
+﻿
 @{
     // Basic page setup and theme flags
     ViewData["Title"] = "Employer Sign Up";
@@ -56,19 +57,25 @@
     <p class="sub">Create your employer account.</p>
 
     <!-- Employer signup form -->
-    <form id="signupForm" class="card" autocomplete="on" novalidate>
+    <form asp-action="Signup" asp-controller="Employer"
+          method="post" class="card" autocomplete="on" novalidate>
+
 
         <!-- Company name -->
-        <label for="suCompany">Company Name</label>
-        <input id="suCompany" class="input" type="text" placeholder="Your company name" required autofocus />
+        <input id="suCompany" name="companyName" class="input"
+               type="text" placeholder="Your company name" required autofocus />
+
 
         <!-- Company email -->
-        <label for="CEmail">Company Email</label>
-        <input id="CEmail" class="input" type="email" placeholder="company@example.com" autocomplete="email" required />
+        <input id="CEmail" name="email" class="input"
+               type="email" placeholder="company@example.com" required />
+
 
         <!-- Password + confirm -->
-        <label for="Pass">Password</label>
-        <input id="Pass" class="input" type="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password" />
+        <input id="Pass" name="password" class="input"
+               type="password" placeholder="At least 6 characters" minlength="6" required />
+
+
 
         <label for="Pass2">Confirm Password</label>
         <input id="Pass2" class="input" type="password" placeholder="Re-enter your password" minlength="6" required autocomplete="new-password" />
@@ -81,6 +88,12 @@
 
         <!-- Message area -->
         <p id="suMsg" class="msg" aria-live="polite"></p>
+        @if (ViewBag.Message != null)
+        {
+            <p style="color: green; text-align:center; margin-top:15px;">
+                @ViewBag.Message
+            </p>
+        }
 
         <!-- Link to login page -->
         <div class="hint">
@@ -101,10 +114,31 @@
       const msg   = document.getElementById('suMsg');
 
       // Handle form submission
-      form.addEventListener('submit', e=>{
-        e.preventDefault();
-        msg.style.color="var(--err)";
-        msg.textContent="";
+             form.addEventListener('submit', e=>{
+            msg.style.color="var(--err)";
+            msg.textContent="";
+
+            if(!form.checkValidity()){
+                form.reportValidity();
+                e.preventDefault();
+                return;
+            }
+
+            if(p1.value !== p2.value){
+                msg.textContent="Passwords do not match.";
+                e.preventDefault();
+                return;
+            }
+
+            if(!terms.checked){
+                msg.textContent="You must agree to the terms.";
+                e.preventDefault();
+                return;
+            }
+
+            // إذا التحقق كله ممتاز → نخلي الفورم يرسل للسيرفر
+        });
+
 
         // Basic HTML validation
         if(!form.checkValidity()){ form.reportValidity(); return; }
@@ -122,6 +156,6 @@
         // Reset form fields
         form.reset();
       });
-    })();
+    ;
     </script>
 }
