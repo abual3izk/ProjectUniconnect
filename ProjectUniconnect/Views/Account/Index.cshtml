@@ -1,6 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Account";
-    var cookies = Context.Request.Cookies;
+    ViewData["Title"] = "Account";                    // Set the page title
+    var cookies = Context.Request.Cookies;            // Retrieve all cookies from the HTTP request
 }
 
 <div class="container">
@@ -9,21 +9,24 @@
     <div class="card mt-3">
         <div class="card-body">
             <h5 class="card-title">Cookie Values</h5>
+
             <ul>
-                @foreach (var c in cookies)
+                @foreach (var c in cookies)           // Iterate through each cookie in the request
                 {
-                    <li>@c.Key : @c.Value</li>
+                    <li>@c.Key : @c.Value</li>        // Display cookie name and its value
                 }
             </ul>
         </div>
     </div>
 </div>
+
 <div class="card mt-3">
     <div class="card-body">
         <h5 class="card-title">Session Values</h5>
+
         <ul>
-            <li>Session Id: @ViewBag.SessionId</li>
-            <li>User Name: @ViewBag.SessionUserName</li>
+            <li>Session Id: @ViewBag.SessionId</li>             // Show the stored Session ID
+            <li>User Name: @ViewBag.SessionUserName</li>        // Show the username stored in Session
         </ul>
     </div>
 </div>

@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using ProjectUniconnect.Data;
 using ProjectUniconnect.Models;
 
-
 namespace ProjectUniconnect.Controllers
 {
     public class EmployerController : Controller
@@ -12,35 +11,36 @@ namespace ProjectUniconnect.Controllers
 
         public EmployerController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context; // DB context
         }
 
         // ========= LIST + SEARCH =========
         public async Task<IActionResult> Index(string search)
         {
-            var query = _context.Employers.AsQueryable();
+            var query = _context.Employers.AsQueryable(); // Base query
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                // (Search) 
+                // Search by company name OR email
                 query = query.Where(e =>
                     e.CompanyName.Contains(search) ||
                     e.Email.Contains(search));
             }
 
+            // Get list ordered by company name
             var list = await query
                 .OrderBy(e => e.CompanyName)
                 .ToListAsync();
 
-            ViewBag.Search = search;
-            return View(list);
+            ViewBag.Search = search; // Keep search value
+            return View(list);       // Return list to view
         }
 
         // ========= SIGNUP = CREATE =========
         [HttpGet]
         public IActionResult Signup()
         {
-            return View();
+            return View(); // Show signup form
         }
 
         [HttpPost]
@@ -48,13 +48,13 @@ namespace ProjectUniconnect.Controllers
         public async Task<IActionResult> Signup(Employer model)
         {
             if (!ModelState.IsValid)
-                return View(model);
+                return View(model); // Validation failed
 
-            // (Insert)
+            // Insert new employer
             _context.Employers.Add(model);
             await _context.SaveChangesAsync();
 
-            TempData["Message"] = "Employer registered successfully.";
+            TempData["Message"] = "Employer registered successfully."; // Success message
             return RedirectToAction(nameof(Index));
         }
 
@@ -63,22 +63,23 @@ namespace ProjectUniconnect.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var employer = await _context.Employers.FindAsync(id);
-            if (employer == null) return NotFound();
-            return View(employer);
+            if (employer == null) return NotFound(); // Not found
+
+            return View(employer); // Load edit page
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Employer model)
         {
-            if (id != model.Id) return BadRequest();
+            if (id != model.Id) return BadRequest();   // ID mismatch
             if (!ModelState.IsValid) return View(model);
 
-            // (Update) 
+            // Update employer
             _context.Update(model);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); // Back to list
         }
 
         // ========= DELETE =========
@@ -89,7 +90,7 @@ namespace ProjectUniconnect.Controllers
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employer == null) return NotFound();
-            return View(employer);
+            return View(employer); // Show delete confirmation
         }
 
         [HttpPost, ActionName("Delete")]
@@ -99,36 +100,38 @@ namespace ProjectUniconnect.Controllers
             var employer = await _context.Employers.FindAsync(id);
             if (employer == null) return NotFound();
 
-            // (Delete) 
+            // Delete employer
             _context.Employers.Remove(employer);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
-        // ========= LOGIN GET =========
+        // ========= LOGIN =========
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(); // Show login form
         }
+
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
+            // Check login credentials
             var employer = _context.Employers
                 .FirstOrDefault(e => e.Email == email && e.Password == password);
 
             if (employer == null)
             {
-                ViewBag.Error = "Invalid login";
+                ViewBag.Error = "Invalid login"; // Wrong email/password
                 return View();
             }
 
-            // حفظ الاسم والسيشن
+            // Save session values
             HttpContext.Session.SetString("EmployerName", employer.CompanyName);
             HttpContext.Session.SetInt32("EmployerId", employer.Id);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home"); // Redirect after login
         }
     }
 }

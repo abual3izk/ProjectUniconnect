@@ -6,11 +6,12 @@ namespace ProjectUniconnect.Controllers
     {
         public IActionResult Index()
         {
-            // 🔹 قراءة قيم السيشن مثل السلايد 36
+            // Read session values (id, username)
             ViewBag.SessionId = HttpContext.Session.GetString("id");
             ViewBag.SessionUserName = HttpContext.Session.GetString("username");
 
-            return View();
+            return View(); // Return the Index view
         }
     }
 }
+

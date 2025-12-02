@@ -6,61 +6,61 @@ namespace ProjectUniconnect.Controllers
     {
         public IActionResult Index()
         {
-            // 🔹 نخزن رقم (id) للجلسة – في السلايد يستخدم أي قيمة، هنا نستخدم Id الحالي
+            // Store session ID (example from slides)
             SetSession("id", HttpContext.Session.Id);
 
             if (User.Identity != null && User.Identity.IsAuthenticated)
             {
-                // مستخدم مسجّل دخول (لو فعّلتِ Identity لاحقًا)
+                // User is logged in
                 var name = User.Identity.Name ?? "user";
 
-                // كوكي + سيشن للاسم
+                // Save username in cookies + session
                 SetCookies("userName", name);
                 SetSession("username", name);
             }
             else
             {
-                // زائر
+                // Guest user
                 SetCookies("userName", "guest");
                 SetSession("username", "guest");
             }
 
-            // كوكي لنوع المتصفح – نفس الفكرة في السلايد
+            // Save browser name (User-Agent)
             SetCookies("browserName", Request.Headers["User-Agent"].ToString());
 
-            return View();
+            return View(); // Return Index view
         }
 
         public void SetSession(string key, string value)
         {
+            // Write a value into session
             HttpContext.Session.SetString(key, value);
         }
 
-
-
         public IActionResult About()
         {
-            return View();   // Views/Home/About.cshtml
+            return View(); // Return About page
         }
 
         public IActionResult Privacy()
         {
-            return View();   // Views/Home/Privacy.cshtml
+            return View(); // Return Privacy page
         }
+
         public IActionResult SetCookies(string cookieName, string cookieValue)
         {
+            // Cookie configuration
             CookieOptions options = new CookieOptions
             {
-                Expires = DateTime.Now.AddDays(15),   // مدة الكوكي
-                HttpOnly = true,                      // يمنع JS
-                Secure = true,                        // مع https
-                SameSite = SameSiteMode.Strict        // يحمي من CSRF
+                Expires = DateTime.Now.AddDays(15), // Cookie expiration
+                HttpOnly = true,                    // Block JS access
+                Secure = true,                      // Works only with HTTPS
+                SameSite = SameSiteMode.Strict      // Protect from CSRF
             };
 
+            // Save cookie
             Response.Cookies.Append(cookieName, cookieValue, options);
-            return Ok("Cookies has been set.");
-
+            return Ok("Cookies has been set."); // Confirmation response
         }
-
     }
 }

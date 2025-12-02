@@ -1,32 +1,42 @@
 ﻿@model ProjectUniconnect.Models.Employer
 
 @{
+    // Set the page title
     ViewData["Title"] = "Edit Employer";
 }
 
 <h1>Edit Employer</h1>
 
+<!-- Form to update employer information -->
 <form asp-action="Edit" method="post">
+
+    <!-- Hidden field to keep the Employer ID -->
     <input type="hidden" asp-for="Id" />
 
+    <!-- Company Name Field -->
     <div>
         <label asp-for="CompanyName"></label>
         <input asp-for="CompanyName" />
         <span asp-validation-for="CompanyName"></span>
     </div>
 
+    <!-- Email Field -->
     <div>
         <label asp-for="Email"></label>
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
     </div>
 
+    <!-- Password Field -->
     <div>
         <label asp-for="Password"></label>
         <input asp-for="Password" type="password" />
         <span asp-validation-for="Password"></span>
     </div>
 
+    <!-- Save Changes Button -->
     <button type="submit">Save</button>
+
+    <!-- Cancel and return to list -->
     <a asp-action="Index">Cancel</a>
 </form>

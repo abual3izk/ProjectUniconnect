@@ -1,6 +1,11 @@
 ﻿@{
+    // Get page title or use default "UniConnect"
     var title = ViewData["Title"] as string ?? "UniConnect";
+
+    // Optional body class (used for custom styling)
     var bodyClass = ViewData["BodyClass"] as string ?? "";
+
+    // Optional theme value (dark/light)
     var bodyTheme = ViewData["BodyTheme"] as string ?? "";
 }
 
@@ -9,17 +14,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Page title -->
     <title>@title</title>
 
-    <!-- CSS الأساسي للموقع لو عندك -->
+    <!-- Main site CSS -->
     <link rel="stylesheet" href="~/css/site.css" />
 
-    <!-- هنا نرندر CSS الخاص بالصفحة -->
+    <!-- Page-specific CSS section -->
     @RenderSection("Styles", required: false)
 </head>
 
 <body class="@bodyClass" data-theme="@bodyTheme">
 
+    <!-- Top right link to Account page -->
     <div style="padding: 15px; text-align: right;">
         <a href="/Account/Index"
            style="font-size: 16px; text-decoration:none; color:#1659ff;">
@@ -27,14 +35,13 @@
         </a>
     </div>
 
-
-    <!-- جسم الصفحة -->
+    <!-- Main page content -->
     @RenderBody()
 
-    <!-- سكربتات عامة -->
+    <!-- Global site scripts -->
     <script src="~/js/site.js"></script>
 
-    <!-- سكربتات خاصة بالصفحة -->
+    <!-- Page-specific scripts -->
     @RenderSection("Scripts", required: false)
 
 </body>
