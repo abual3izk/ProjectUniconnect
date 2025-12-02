@@ -55,7 +55,7 @@ function bindLoginForm({ formId, emailId, passId, msgId }) {
         // Simulated success message (front-end only)
         if (msg) {
             msg.style.color = "var(--ok)";
-            msg.textContent = "Login successful (front-end only).";
+            msg.textContent = "Login successful!";
         }
 
         // Reset form fields
