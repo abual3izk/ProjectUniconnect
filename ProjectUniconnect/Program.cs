@@ -43,7 +43,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseStaticFiles();   // علشان يقرأ wwwroot (css, js, images)
+app.UseStaticFiles();   // wwwroot (css, js, images)
 
 app.MapControllerRoute(
     name: "default",
