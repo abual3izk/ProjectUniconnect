@@ -5,13 +5,6 @@
 
 <div class="container">
     <h1 class="mt-5">Account Information</h1>
-    <div style="margin-bottom: 20px;">
-        <a asp-controller="Home" asp-action="Index"
-           style="padding: 8px 16px;    background:white; ; color:black; border-radius:6px; text-decoration:none;">
-            ← Back to Home
-        </a>
-    </div>
-
     <div class="card mt-3">
         <div class="card-body">
             <h5 class="card-title">Cookie Values</h5>
@@ -34,5 +27,11 @@
             <li>Session Id: @ViewBag.SessionId</li>             // Show the stored Session ID
             <li>User Name: @ViewBag.SessionUserName</li>        // Show the username stored in Session
         </ul>
+    </div>
+    <div>
+        <a asp-controller="Home" asp-action="Index"
+           style="padding: 8px 16px;    background:rgb(104, 113, 163); ; color:rgb(255, 255, 255); border-radius:6px; text-decoration:none;">
+            Back to Home
+        </a>
     </div>
 </div>

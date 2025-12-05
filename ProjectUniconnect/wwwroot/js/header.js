@@ -11,7 +11,7 @@ class UCHeader extends HTMLElement {
 
     // MVC routes
     const HOME_HREF  = "/";
-    const ABOUT_HREF = "/Home/About";
+      const ABOUT_HREF = "/Home/About";
 
     // Header structure
     const wrapper = document.createElement("header");
@@ -21,6 +21,8 @@ class UCHeader extends HTMLElement {
       <nav class="uc-nav">
         <a class="uc-link" href="${HOME_HREF}">Home</a>
         <a class="uc-link" href="${ABOUT_HREF}">About Us</a>
+        <a class="uc-link" href="/Account/Index">User Account</a>
+
       </nav>
     `;
 
