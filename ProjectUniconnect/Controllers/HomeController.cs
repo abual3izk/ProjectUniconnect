@@ -58,6 +58,7 @@ namespace ProjectUniconnect.Controllers
             };
 
             Response.Cookies.Append(cookieName, cookieValue, options);
+            Response.Cookies.Append("browser", Request.Headers["User-Agent"].ToString());
             return Ok("Cookies has been set.");
 
         }
